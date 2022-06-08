@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rubik:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rubik:wght@500;600&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+h1 {
+    font-family: 'Roboto Mono', monospace;
+font-size: 48px;
+font-weight: 400;
+line-height: 63px;
+letter-spacing: 0em;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.moviescontainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 1440px;
+    height: max-content;
+    /* border: 2px black solid; */
+    row-gap: 48px;
+    column-gap: 75px;
+    justify-content: center;
+    align-items: center;
+    /* flex: 1; */
+    
+}
+.movie {
+    height: 374px;
+    width: 350px;
+    border-radius: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+row-gap: 53.52px;
+
+    
+}
+
+.readmore {
+    display: none;
+}
+
+
+.movie:hover .readmore {
+    display: block;
+    background-color:#352C9A;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18.96px;
+    color: white;
+    padding: 10px;
+
+    
+}
+
+.movie:hover .movietitle {
+    display: block;
+color: #FFFFFF;
+font-family: "Rubik", sans-serif;
+font-size: 24px;
+font-weight: 600;
+line-height: 28.44px;
+letter-spacing: 0.004em;
+margin-top: 180px;
+text-align: center;
+}
+
+.movietitle {
+    display: none;
+}
+
+.errorMessage {
+    font-family: Rubik;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: 0.004em;
+    margin: 50px;
+    text-align: center;
+    
+}
+
+.errorImage {
+    width: 50%;
+    height: 50%;
+}
+
+
+@media (max-width:1000px ) {
+    .container .moviescontainer{
+        display: flex;
+        flex-wrap: wrap;
+        width: 1000px;
+    }
+
+    
+
+    @media (max-width:600px ) {
+        .container .moviescontainer{
+            display: flex;
+            flex-wrap: wrap;
+            width: 600px;
+        }
+
+        
+    }
+}
+
+
+
+
+
+
+
+
