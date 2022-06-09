@@ -46,6 +46,8 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 row-gap: 53.52px;
+box-shadow: 10px 10px 20px #888888;
+
 
     
 }
