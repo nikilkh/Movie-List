@@ -29,12 +29,10 @@ letter-spacing: 0em;
     margin-top: 30px;
     width: 1440px;
     height: max-content;
-    /* border: 2px black solid; */
     row-gap: 48px;
     column-gap: 75px;
     justify-content: center;
     align-items: center;
-    /* flex: 1; */
     
 }
 .movie {
@@ -54,11 +52,6 @@ box-shadow: 10px 10px 20px #888888;
 
 .readmore {
     display: none;
-}
-
-
-.movie:hover .readmore {
-    display: block;
     background-color:#352C9A;
     font-family: "Rubik", sans-serif;
     font-weight: 500;
@@ -66,13 +59,40 @@ box-shadow: 10px 10px 20px #888888;
     line-height: 18.96px;
     color: white;
     padding: 10px;
+    cursor: pointer;
+
+}
+
+
+.movie:hover .readmore {
+    display: block;
+    
 
     
 }
 
 .movie:hover .movietitle {
     display: block;
-color: #FFFFFF;
+
+}
+
+.readmore:active {
+    text-decoration: underline;
+}
+
+.readmore:disabled {
+    background: #626262;
+
+}
+
+.readmore:hover {
+    background-color: #724FD8;
+
+}
+
+.movietitle {
+    display: none;
+    color: #FFFFFF;
 font-family: "Rubik", sans-serif;
 font-size: 24px;
 font-weight: 600;
@@ -80,10 +100,9 @@ line-height: 28.44px;
 letter-spacing: 0.004em;
 margin-top: 180px;
 text-align: center;
-}
+    
 
-.movietitle {
-    display: none;
+
 }
 
 .errorMessage {
@@ -123,6 +142,13 @@ text-align: center;
     }
 }
 
+.movie:hover {
+/* opacity: 0.7;  */
+background: #62626299;
+/* background-color: red; */
+
+  background-blend-mode: screen;
+}
 
 
 

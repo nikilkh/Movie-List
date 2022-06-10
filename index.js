@@ -11,29 +11,29 @@ const Button = document.querySelector(".searchButton");
 getMovie(API_URL);
 
 
-Button.addEventListener("click", (e)=> {
+Button.addEventListener("click", (e) => {
     e.preventDefault();
 
     console.log("clicked");
     let searchValue = input.value;
 
-    if(searchValue) {
+    if (searchValue) {
         getMovie(searchURL + searchValue);
     }
     else {
         getMovie(API_URL);
-        }
+    }
 })
 
 
 async function getMovie(url) {
-let moviescontainer = document.querySelector(".moviescontainer");
-moviescontainer.innerHTML= "";
+    let moviescontainer = document.querySelector(".moviescontainer");
+    moviescontainer.innerHTML = "";
     const res = await fetch(url);
     const data = await res.json();
     const result = data.results;
     console.log(result);
-    if(result.length ===0) {
+    if (result.length === 0) {
         const errorMessage = document.createElement("h2");
         errorMessage.classList.add("errorMessage");
         errorMessage.innerHTML = "Sorry,there is no result for keyword you searched";
@@ -46,7 +46,7 @@ moviescontainer.innerHTML= "";
         moviescontainer.appendChild(errorImage);
 
     }
-    result.forEach((movie)=> {
+    result.forEach((movie) => {
         // console.log(movie.backdrop_path);
         let moviediv = document.createElement("div");
         moviediv.classList.add("movie");
@@ -57,14 +57,14 @@ moviescontainer.innerHTML= "";
         title.classList.add("movietitle");
         moviediv.appendChild(title);
         // moviediv.innerHTML = `${movie.title}`;
-        
+
         const readmore = document.createElement("a");
         readmore.classList.add("readmore");
         readmore.innerHTML = "Read More";
 
         moviediv.appendChild(readmore);
         moviescontainer.appendChild(moviediv);
-        
+
     })
 
 }
