@@ -10,63 +10,57 @@ const Button = document.querySelector(".searchButton");
 
 getMovie(API_URL);
 
+function displayMovies(result) {
+  result.forEach((movie) => {
+    let moviediv = document.createElement("div");
+    moviediv.classList.add("movie");
 
-Button.addEventListener("click", (e) => {
-    e.preventDefault();
+    moviediv.innerHTML = `
+        <h3  class="movietitle" >${movie.title}</h3>
+    <button class="readmore" > Read More </button>
+    `;
 
-    console.log("clicked");
-    let searchValue = input.value;
+    moviediv.style.backgroundImage = `
+        url(${
+          movie.poster_path
+            ? IMG_URL + movie.poster_path
+            : "http://via.placeholder.com/1080x1580"
+        })
+          `;
+    moviediv.style.backgroundSize = "cover";
 
-    if (searchValue) {
-        getMovie(searchURL + searchValue);
-    }
-    else {
-        getMovie(API_URL);
-    }
-})
-
-
-async function getMovie(url) {
-    let moviescontainer = document.querySelector(".moviescontainer");
-    moviescontainer.innerHTML = "";
-    const res = await fetch(url);
-    const data = await res.json();
-    const result = data.results;
-    console.log(result);
-    if (result.length === 0) {
-        const errorMessage = document.createElement("h2");
-        errorMessage.classList.add("errorMessage");
-        errorMessage.innerHTML = "Sorry,there is no result for keyword you searched";
-
-        const errorImage = document.createElement("img");
-        errorImage.classList.add("errorImage")
-        errorImage.src = "errorImage.svg";
-
-        moviescontainer.appendChild(errorMessage);
-        moviescontainer.appendChild(errorImage);
-
-    }
-    result.forEach((movie) => {
-        // console.log(movie.backdrop_path);
-        let moviediv = document.createElement("div");
-        moviediv.classList.add("movie");
-        moviediv.style.backgroundImage = `url(${IMG_URL + movie.poster_path})`;
-
-        const title = document.createElement("h3");
-        title.innerHTML = `${movie.title}`;
-        title.classList.add("movietitle");
-        moviediv.appendChild(title);
-        // moviediv.innerHTML = `${movie.title}`;
-
-        const readmore = document.createElement("a");
-        readmore.classList.add("readmore");
-        readmore.innerHTML = "Read More";
-
-        moviediv.appendChild(readmore);
-        moviescontainer.appendChild(moviediv);
-
-    })
-
+    moviescontainer.appendChild(moviediv);
+  });
 }
 
+async function getMovie(url) {
+  let moviescontainer = document.querySelector(".moviescontainer");
+  moviescontainer.innerHTML = "";
+  const res = await fetch(url);
+  const data = await res.json();
+  const result = data.results;
+  if (result.length === 0) {
+    const noResultDiv = document.createElement("div");
+    noResultDiv.classList.add("noResultDiv");
 
+    noResultDiv.innerHTML = `
+        <h2>Sorry,there is no result for keyword you searched</h2>
+        <img src="errorImage.svg" alt="background">
+        `;
+    moviescontainer.appendChild(noResultDiv);
+  } else {
+    displayMovies(result);
+  }
+}
+
+Button.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  let searchValue = input.value;
+
+  if (searchValue) {
+    getMovie(searchURL + searchValue);
+  } else {
+    getMovie(API_URL);
+  }
+});
